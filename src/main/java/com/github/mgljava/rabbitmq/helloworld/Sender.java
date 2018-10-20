@@ -1,7 +1,7 @@
-package com.github.mgljava.rabbitmq;
+package com.github.mgljava.rabbitmq.helloworld;
 
-import static com.github.mgljava.rabbitmq.Constant.HOST;
-import static com.github.mgljava.rabbitmq.Constant.QUEUE_NAME;
+import static com.github.mgljava.rabbitmq.config.Constant.HOST;
+import static com.github.mgljava.rabbitmq.config.Constant.QUEUE_NAME;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

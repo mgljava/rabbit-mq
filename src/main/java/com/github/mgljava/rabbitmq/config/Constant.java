@@ -1,4 +1,4 @@
-package com.github.mgljava.rabbitmq;
+package com.github.mgljava.rabbitmq.config;
 
 public class Constant {
 

@@ -12,10 +12,14 @@ public class MyConnectionManager {
   private static Connection connection;
 
   public static Channel getInstance() {
+    // 创建连接
     ConnectionFactory connectionFactory = new ConnectionFactory();
+    // 设置主机
     connectionFactory.setHost("127.0.0.1");
     try {
+      // 建立连接
       connection = connectionFactory.newConnection();
+      // 创建管道
       channel = connection.createChannel();
       return channel;
     } catch (IOException | TimeoutException e) {

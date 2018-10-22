@@ -14,6 +14,17 @@ RabbitMQ 消息模型的核心思想是，生产者不直接发送任何消息�
 ---
 声明交换器`channel.exchangeDeclare("logs", "fanout");`  
 使用：`channel.basicPublish("logs", "", null, message.getBytes());`
+### 消息持久化
+要从奔溃的 RabbitMQ 中恢复的消息，我们需要做消息持久化。如果消息要从 RabbitMQ 奔溃中恢复，那么必须满足三点，且三者缺一不可。
+* 交换器必须是持久化。
+`channel.exchangeDeclare(EXCHANGE_NAME, "topic", true);`
+* 队列必须是持久化的。
+`channel.queueDeclare(QUEUE_NAME, true, false, false, null);`
+* 消息必须是持久化的。
+`channel.basicPublish("", queue_name, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());`
+
+
+
 
 
 

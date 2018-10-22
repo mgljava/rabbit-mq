@@ -16,16 +16,18 @@ public class MyConnectionManager {
     ConnectionFactory connectionFactory = new ConnectionFactory();
     // 设置主机
     connectionFactory.setHost("127.0.0.1");
+    //设置访问的用户
+    // connectionFactory.setUsername("");
+    // connectionFactory.setPassword("");
     try {
       // 建立连接
       connection = connectionFactory.newConnection();
       // 创建管道
       channel = connection.createChannel();
-      return channel;
     } catch (IOException | TimeoutException e) {
       e.printStackTrace();
     }
-    return null;
+    return channel;
   }
 
   public static void closeResource() {

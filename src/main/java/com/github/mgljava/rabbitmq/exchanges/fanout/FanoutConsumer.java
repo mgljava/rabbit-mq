@@ -22,7 +22,7 @@ public class FanoutConsumer {
     String queueName = channel.queueDeclare().getQueue();
     System.out.println("queueName is : " + queueName);
 
-    channel.queueDeclare(queueName, false, false, true, null);
+    // channel.queueDeclare(queueName, false, false, true, null);
     // 把队列绑定到路由上
     channel.queueBind(queueName, EXCHANGE_NAME, "");
 

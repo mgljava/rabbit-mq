@@ -1,12 +1,10 @@
 package com.github.mgljava.rabbitmq.helloworld;
 
-import static com.github.mgljava.rabbitmq.config.Constant.HOST;
 import static com.github.mgljava.rabbitmq.config.Constant.QUEUE_NAME;
 
+import com.github.mgljava.rabbitmq.factory.MyConnectionManager;
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 import java.io.IOException;
@@ -18,13 +16,9 @@ public class Received {
 
   public static void main(String[] args) throws Exception {
 
-    ConnectionFactory connectionFactory = new ConnectionFactory();
-    connectionFactory.setHost(HOST);
+    Channel channel = MyConnectionManager.getInstance();
 
-    Connection connection = connectionFactory.newConnection();
-
-    Channel channel = connection.createChannel();
-
+    assert channel != null;
     channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
     com.rabbitmq.client.Consumer consumer = new DefaultConsumer(channel) {
